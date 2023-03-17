@@ -26,3 +26,6 @@ Installing this app is very simple:
 * Just clone this repository and run the project in your android device
 (Kya yar sir aap to android developer ho 😭)
 (Uploaded APK HERE for those who do not want to setup Android Studio, just download the app and install the APK)
+
+##Screenshots of User Interface
+![]([https://github.com/app-src/Virya/blob/[branch]/image.jpg](https://github.com/app-src/Virya/blob/master/ss/virya%20(1).png)?raw=true)
