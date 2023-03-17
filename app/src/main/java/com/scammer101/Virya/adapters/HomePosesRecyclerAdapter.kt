@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.scammer101.Virya.Models.YogaPose
 import com.scammer101.Virya.R
+import com.scammer101.Virya.Screens.DemoVideoScreen
 import com.scammer101.Virya.Screens.PoseDetectorActivity
 import com.scammer101.Virya.databinding.ItemPosesRecyclerviewBinding
 
@@ -29,7 +30,7 @@ class HomePosesRecyclerAdapter(var context : Context, var list: List<YogaPose>) 
         holder.binding.sessionIv.setImageResource(yoga.yogaImage)
         holder.itemView.setOnClickListener {
             Toast.makeText(context, yoga.yogaName, Toast.LENGTH_SHORT).show()
-            var intent = Intent(context, PoseDetectorActivity::class.java)
+            var intent = Intent(context, DemoVideoScreen::class.java)
             intent.putExtra("yoga", yoga.yogaName)
             context.startActivity(intent)
         }
