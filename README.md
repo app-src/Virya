@@ -1,6 +1,6 @@
 # Virya
 
-A mobile app designed to help users accurately practise yoga.
+A mobile app designed to help users accurately practice yoga.
 
 #### Why Virya?
 Yoga is beneficial when practised in the proper order and positions; otherwise, it would do more harm than good to the person.
@@ -27,5 +27,24 @@ Installing this app is very simple:
 (Kya yar sir aap to android developer ho 😭)
 (Uploaded APK HERE for those who do not want to setup Android Studio, just download the app and install the APK)
 
-##Screenshots of User Interface
-![]([https://github.com/app-src/Virya/blob/[branch]/image.jpg](https://github.com/app-src/Virya/blob/master/ss/virya%20(1).png)?raw=true)
+## Screenshots of User Interface
+
+<img src="ss/virya (1).png" width="400">
+
+<img src="ss/virya (2).png" width="400">
+
+<img src="ss/virya (3).png" width="400">
+
+<img src="ss/virya (4).png" width="400">
+
+<img src="ss/virya (5).png" width="400">
+
+<img src="ss/virya (6).png" width="400">
+
+
+## Demo Video
+
+https://user-images.githubusercontent.com/38736403/225840807-7cafd9b5-11a6-4902-a4af-a217affec978.mp4
+
+
+
