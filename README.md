@@ -8,7 +8,7 @@ Yoga is beneficial when practised in the proper order and positions; otherwise, 
 Who's got time to go to expenive yoga classes. What's better than a personal yoga trainer app in their mobile itself.
 
 #### What is Virya?
-Virya is a mobile application which uses Android ML Kit to detect pose of users using mobile cameras. Then guide them to perform yoga in the best way possible. We are matching the angles for detectig the accuracy of the yoga positions users are perpforming.
+Virya is a mobile application which uses Android ML Kit to detect pose of users using mobile cameras. Then guide them to perform yoga in the best way possible. We are matching the angles for detectig the accuracy of the yoga positions users are perpforming.There are several applications available to track your workouts, but no one uses machine learning to let consumers know if they are doing it correctly.
 
 ## Tech Stack
 
@@ -25,20 +25,15 @@ Installing this app is very simple:
 * Create a new project
 * Just clone this repository and run the project in your android device
 (Kya yar sir aap to android developer ho 😭)
-(Uploaded APK HERE for those who do not want to setup Android Studio, just download the app and install the APK)
+(Uploaded APK [HERE](https://github.com/app-src/Virya/raw/master/apk/viryaDebug.apk) for those who do not want to setup Android Studio, just download the app and install the APK)
 
 ## Screenshots of User Interface
 
-<img src="ss/virya (1).png" width="400">
-
+<img src="ss/virya (1).png" width="400">\
 <img src="ss/virya (2).png" width="400">
-
-<img src="ss/virya (3).png" width="400">
-
+<img src="ss/virya (3).png" width="400">\
 <img src="ss/virya (4).png" width="400">
-
-<img src="ss/virya (5).png" width="400">
-
+<img src="ss/virya (5).png" width="400">\
 <img src="ss/virya (6).png" width="400">
 
 
