@@ -29,7 +29,7 @@ class HomePosesRecyclerAdapter(var context : Context, var list: List<YogaPose>) 
         val yoga = list[position]
         holder.binding.sessionIv.setImageResource(yoga.yogaImage)
         holder.itemView.setOnClickListener {
-            Toast.makeText(context, yoga.yogaName, Toast.LENGTH_SHORT).show()
+
             var intent = Intent(context, DemoVideoScreen::class.java)
             intent.putExtra("yoga", yoga.yogaName)
             context.startActivity(intent)

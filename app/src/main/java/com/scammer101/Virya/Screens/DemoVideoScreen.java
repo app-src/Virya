@@ -28,6 +28,8 @@ public class DemoVideoScreen extends AppCompatActivity {
         init();
         setListener();
 
+
+
     }
 
     private void init()

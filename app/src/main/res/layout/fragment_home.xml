@@ -205,7 +205,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/segoe_ui"
-                            android:text="Minute"
+                            android:text="Seconds"
                             android:textAlignment="center"
                             android:textColor="@color/previewColorLight"
                             android:textSize="13sp"

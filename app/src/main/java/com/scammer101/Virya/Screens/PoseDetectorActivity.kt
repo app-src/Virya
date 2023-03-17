@@ -5,34 +5,31 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Camera
 import android.graphics.Color
 import android.graphics.Point
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.Size
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.CameraSelector.LensFacing
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
-import androidx.camera.core.VideoCapture
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.LifecycleCameraController
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.common.util.concurrent.ListenableFuture
-import com.google.mlkit.common.MlKit
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.PoseDetector
-import com.google.mlkit.vision.pose.PoseLandmark
 import com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions
 import com.scammer101.Virya.Models.Draw
 import com.scammer101.Virya.Models.PoseDetectionUtils
-import com.scammer101.Virya.R
+import com.scammer101.Virya.Utilities.ConstantsValues
+import com.scammer101.Virya.Utilities.PreferenceManager
 import com.scammer101.Virya.databinding.ActivityPoseDetectorBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -44,6 +41,12 @@ class PoseDetectorActivity : AppCompatActivity() {
     private lateinit var poseDetector: PoseDetector
     private lateinit var cameraProviderFuture : ListenableFuture<ProcessCameraProvider>
     private var cameraFacing: Int = 0
+    private lateinit var yogaPose : String
+    private var start : Long = 0
+    private var end : Long = 0
+    private var poseCount : Int = 0
+    private var preferenceManager: PreferenceManager? = null
+    private lateinit var firestore : FirebaseFirestore
 
     private lateinit var bitmapBuffer: Bitmap
 
@@ -53,48 +56,63 @@ class PoseDetectorActivity : AppCompatActivity() {
         setContentView(activityPoseDetectorBinding.root)
         // Request camera permissions
         cameraFacing = CameraSelector.LENS_FACING_FRONT
-        val yogaPose :String = intent.getStringExtra("yoga").toString()
+        firestore = FirebaseFirestore.getInstance()
+        yogaPose = intent.getStringExtra("yoga").toString()
         setStatusBarColor(Color.parseColor("#000000"))
-        Toast.makeText(applicationContext, yogaPose,Toast.LENGTH_SHORT).show()
+        preferenceManager = PreferenceManager(this)
         if (allPermissionsGranted()) {
-            startCamera()
+            start = System.currentTimeMillis()
+            //start camera
+            cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+            cameraProviderFuture.addListener(Runnable {
+                cameraProvider = cameraProviderFuture.get()
+                bindPreview(cameraProvider)
+
+            },ContextCompat.getMainExecutor(this))
+            cameraExecutor = Executors.newSingleThreadExecutor()
+
+            //start pose detector
+            val poseDetectorOptions = AccuratePoseDetectorOptions.Builder()
+                .setDetectorMode(AccuratePoseDetectorOptions.STREAM_MODE)
+                .build()
+            poseDetector = PoseDetection.getClient(poseDetectorOptions)
+
+
+            activityPoseDetectorBinding.switchCamera.setOnClickListener(View.OnClickListener {
+                if(cameraFacing == CameraSelector.LENS_FACING_FRONT){
+                    cameraFacing = CameraSelector.LENS_FACING_BACK
+                }else{
+                    cameraFacing = CameraSelector.LENS_FACING_FRONT
+                }
+                cameraProvider.unbindAll()
+                cameraExecutor.shutdown()
+
+                //start camera
+                cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+                cameraProviderFuture.addListener(Runnable {
+                    cameraProvider = cameraProviderFuture.get()
+                    bindPreview(cameraProvider)
+
+                },ContextCompat.getMainExecutor(this))
+                cameraExecutor = Executors.newSingleThreadExecutor()
+
+            })
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
-        activityPoseDetectorBinding.switchCamera.setOnClickListener(View.OnClickListener {
-            if(cameraFacing == CameraSelector.LENS_FACING_FRONT){
-                cameraFacing = CameraSelector.LENS_FACING_BACK
-            }else{
-                cameraFacing = CameraSelector.LENS_FACING_FRONT
-            }
-            if(cameraProvider!=null && cameraExecutor!=null) {
-                cameraExecutor.shutdown()
-                cameraProvider.unbindAll()
-            }else(startCamera())
-
-        })
-        cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
     private fun startCamera() {
         setProcessor()
 
-        cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-        cameraProviderFuture.addListener(Runnable {
-            val cameraProvider = cameraProviderFuture.get()
-            bindPreview(cameraProvider)
 
-        },ContextCompat.getMainExecutor(this))
 
     }
 
     fun setProcessor(){
-        val poseDetectorOptions = AccuratePoseDetectorOptions.Builder()
-            .setDetectorMode(AccuratePoseDetectorOptions.STREAM_MODE)
-            .build()
-        poseDetector = PoseDetection.getClient(poseDetectorOptions)
+
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
@@ -105,6 +123,76 @@ class PoseDetectorActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
+        end = System.currentTimeMillis()
+        val timeSpent : Long = end-start
+        val seconds: Long = timeSpent / 1000
+        Log.d("timeSpent", seconds.toString())
+        var isFinish : Int = 0
+        if(poseCount>0)
+        {
+            isFinish = 1
+        }
+
+        if(yogaPose == "treepose")
+        {
+            val todayUserDateAndId = preferenceManager!!.getString(ConstantsValues.KEY_DATE)
+            if(isFinish==1)
+            {
+                val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                userDocRef.update("finished", FieldValue.increment(1))
+                userDocRef.update("treePoseCountPose", FieldValue.increment(1))
+                userDocRef.update("treePoseCountTimer", FieldValue.increment(seconds))
+                userDocRef.update("timeSpent", FieldValue.increment(seconds))
+            }
+            else {
+                val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                userDocRef.update("inProgress", FieldValue.increment(1))
+                userDocRef.update("treePoseCountTimer", FieldValue.increment(seconds))
+                userDocRef.update("timeSpent", FieldValue.increment(seconds))
+            }
+
+
+        } else if(yogaPose == "warrior2pose")
+            {
+                val todayUserDateAndId = preferenceManager!!.getString(ConstantsValues.KEY_DATE)
+                if(isFinish==1)
+                {
+                    val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                    userDocRef.update("finished", FieldValue.increment(1))
+                    userDocRef.update("warriorPoseCountPose", FieldValue.increment(1))
+                    userDocRef.update("warriorPoseCountTimer", FieldValue.increment(seconds))
+                    userDocRef.update("timeSpent", FieldValue.increment(seconds))
+                }
+                else {
+                    val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                    userDocRef.update("inProgress", FieldValue.increment(1))
+                    userDocRef.update("warriorPoseCountTimer", FieldValue.increment(seconds))
+                    userDocRef.update("timeSpent", FieldValue.increment(seconds))
+                }
+
+
+            }
+        else
+        {
+            val todayUserDateAndId = preferenceManager!!.getString(ConstantsValues.KEY_DATE)
+            if(isFinish==1)
+            {
+                val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                userDocRef.update("finished", FieldValue.increment(1))
+                userDocRef.update("tPoseCountPose", FieldValue.increment(1))
+                userDocRef.update("tPoseCountTimer", FieldValue.increment(seconds))
+                userDocRef.update("timeSpent", FieldValue.increment(seconds))
+            }
+            else {
+                val userDocRef = firestore.collection("DailyYoga").document(todayUserDateAndId)
+                userDocRef.update("inProgress", FieldValue.increment(1))
+                userDocRef.update("tPoseCountTimer", FieldValue.increment(seconds))
+                userDocRef.update("timeSpent", FieldValue.increment(seconds))
+            }
+
+
+        }
+
     }
 
     companion object {
@@ -152,7 +240,7 @@ class PoseDetectorActivity : AppCompatActivity() {
         return darkness >= 0.5
     }
     @SuppressLint("RestrictedApi", "UnsafeExperimentalUsageError", "NewApi",
-        "UnsafeOptInUsageError"
+        "UnsafeOptInUsageError", "SetTextI18n"
     )
     private fun bindPreview(cameraProvider: ProcessCameraProvider){
 
@@ -194,21 +282,58 @@ class PoseDetectorActivity : AppCompatActivity() {
                             if(activityPoseDetectorBinding.parentLayout.childCount>3){
                                 activityPoseDetectorBinding.parentLayout.removeViewAt(3)
                             }
-                            val element = Draw(applicationContext,it)
-                            var poseDetectionUtils = PoseDetectionUtils()
-                            var angleList = poseDetectionUtils.pose_angles(it)
-                            var accuracy = poseDetectionUtils.accuracy_Treepose(angleList)
-                            Log.d("Tree Pose Accuracy:","$accuracy")
-                            runOnUiThread(Runnable {
-                                activityPoseDetectorBinding.accuracy.text = "$accuracy"
-                            })
-                            activityPoseDetectorBinding.parentLayout.addView(element)
+                            var i = 0
+                            var overallLikelyHood = 0f
+                            for (pose in it.allPoseLandmarks){
+                                overallLikelyHood+=pose.inFrameLikelihood
+                                i+=1
+                            }
+                            overallLikelyHood/=i
+                            if(overallLikelyHood>0.5){
+                                val element = Draw(applicationContext,it)
+                                var poseDetectionUtils = PoseDetectionUtils()
+                                var angleList = poseDetectionUtils.pose_angles(it)
+                                Log.v("angleCheck", angleList.toString())
+                                var accuracy = 00.00
+                                if(yogaPose == "treepose")
+                                {
+                                    accuracy = poseDetectionUtils.accuracy_Treepose(angleList)
+                                    Log.d("Posename", yogaPose.toString())
+                                    if(accuracy>=70)
+                                    {
+                                        poseCount++
+                                    }
+                                }
+                                else if(yogaPose == "warrior2pose")
+                                {
+                                    accuracy = poseDetectionUtils.accuracy_Warrior2pose(angleList)
+                                    Log.d("Posename", yogaPose.toString())
+                                    if(accuracy>=70)
+                                    {
+                                        poseCount++
+                                    }
+                                }
+                                else
+                                {
+                                    accuracy = poseDetectionUtils.accuracy_Tpose(angleList)
+                                    Log.d("Posename", yogaPose.toString())
+                                    if(accuracy>=70)
+                                    {
+                                        poseCount++
+                                    }
+                                }
+
+                                Log.d("Tree Pose Accuracy:","$accuracy")
+                                runOnUiThread(Runnable {
+                                    activityPoseDetectorBinding.accuracy.visibility = View.VISIBLE
+                                    activityPoseDetectorBinding.accuracy.text = "${accuracy.toInt()}%"
+                                })
+                                activityPoseDetectorBinding.parentLayout.addView(element)
+                            }else{activityPoseDetectorBinding.accuracy.visibility = View.GONE}
                         }
                         imageProxy.close()
                     }
                     .addOnFailureListener{
-
-
                         imageProxy.close()
                     }
             }

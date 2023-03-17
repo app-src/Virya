@@ -3,12 +3,12 @@ package com.scammer101.Virya.Models;
 public class DailyYogaModel
 {
     private int finished, inProgress, timeSpent, warriorPoseCountPose, warriorPoseCountTimer, tPoseCountPose, tPoseCountTimer, treePoseCountPose, treePoseCountTimer;
-    private String date, userAndDate;
+    private String date, userAndDate, userId;
 
     public DailyYogaModel() {
     }
 
-    public DailyYogaModel(int finished, int inProgress, int timeSpent, int warriorPoseCountPose, int warriorPoseCountTimer, int tPoseCountPose, int tPoseCountTimer, int treePoseCountPose, int treePoseCountTimer, String date, String userAndDate) {
+    public DailyYogaModel(int finished, int inProgress, int timeSpent, int warriorPoseCountPose, int warriorPoseCountTimer, int tPoseCountPose, int tPoseCountTimer, int treePoseCountPose, int treePoseCountTimer, String date, String userAndDate, String userId) {
         this.finished = finished;
         this.inProgress = inProgress;
         this.timeSpent = timeSpent;
@@ -20,6 +20,7 @@ public class DailyYogaModel
         this.treePoseCountTimer = treePoseCountTimer;
         this.date = date;
         this.userAndDate = userAndDate;
+        this.userId = userId;
     }
 
     public int getWarriorPoseCountPose() {
@@ -36,6 +37,14 @@ public class DailyYogaModel
 
     public void setWarriorPoseCountTimer(int warriorPoseCountTimer) {
         this.warriorPoseCountTimer = warriorPoseCountTimer;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public int gettPoseCountPose() {

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.scammer101.Virya.Models.DailyYogaModel
 import com.scammer101.Virya.Models.UserModel
 import com.scammer101.Virya.R
 import com.scammer101.Virya.Screens.AddDetailsScreen
@@ -29,6 +30,10 @@ class ProfileFragment : Fragment() {
     private var userModel: UserModel? = null
     private lateinit var auth : FirebaseAuth
     private var preferenceManager: PreferenceManager? = null
+    private var dailyModel: DailyYogaModel? = null
+    private var totalAsanaIsFinished : Int = 0
+    private var totalTime : Int = 0
+    private var totalAsana : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,6 +90,25 @@ class ProfileFragment : Fragment() {
 
                 }
 
+            }
+
+        firestore.collection("DailyYoga").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    try {
+                        if(document.get("userId")!! == FirebaseAuth.getInstance().uid.toString()){
+                            dailyModel = document.toObject(DailyYogaModel::class.java)
+                            totalAsana+= dailyModel!!.finished + dailyModel!!.inProgress
+                            totalTime+= dailyModel!!.timeSpent
+                            totalAsanaIsFinished+= dailyModel!!.finished
+                        }
+                    } catch (e: Exception) {
+
+                    }
+                }
+                binding.profileTrainingCompleted.text = totalAsana.toString()
+                binding.profileTotalTime.text = totalTime.toString()
+                binding.profileTotalAsanas.text = totalAsanaIsFinished.toString()
             }
 
         binding.profileLogout.setOnClickListener{

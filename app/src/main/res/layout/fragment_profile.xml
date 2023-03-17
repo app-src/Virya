@@ -220,7 +220,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Training Completed:"
+                    android:text="Total Asana Performed:"
                     android:fontFamily="@font/segoe_ui"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -275,7 +275,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[ In Minutes ]"
+                    android:text="[ In Seconds ]"
                     android:fontFamily="@font/segoe_ui"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -312,7 +312,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Asana Performed:"
+                    android:text="Total Asana Completed:"
                     android:fontFamily="@font/segoe_ui"
                     android:textSize="16sp"
                     android:textStyle="bold"

@@ -147,8 +147,11 @@ class GoalsFragment : Fragment() {
             val customSetCount = preferenceManager!!.getString(ConstantsValues.KEY_REPEAT).toInt()
             val customFirebaseTimer = preferenceManager!!.getString(ConstantsValues.KEY_FIREBASE_TIMER).toInt()
             val customFirebaseCount = preferenceManager!!.getString(ConstantsValues.KEY_FIREBASE_REPEAT).toInt()
-            binding.goalTotalTimer.text = customFirebaseTimer.toString() + " min"
-            currentProgress = customFirebaseCount/customSetCount*100
+            binding.goalTotalTimer.text = customFirebaseTimer.toString() + " sec"
+            currentProgress = (customFirebaseCount/customSetCount).toInt()*100
+            Log.v("CurrentProgress", currentProgress.toString())
+            Log.v("CurrentProgress", customFirebaseCount.toString())
+            Log.v("CurrentProgress", customSetCount.toString())
             if(currentProgress>100)
             {
                 currentProgress = 100
