@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Virya" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorPrimary">@color/themeLightGreen</item>
+        <item name="colorPrimaryVariant">@color/themeLightGreen</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/themeLightGreen</item>
+        <item name="colorSecondaryVariant">@color/themeLightGreen</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/green</item>
+    </style>
+</resources>

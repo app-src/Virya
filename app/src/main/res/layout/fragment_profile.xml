@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".Fragments.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/profile_logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logout_asset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <TextView
+        android:id="@+id/hi_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi,"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/previewColorLight"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="70dp"
+        />
+    <TextView
+        android:id="@+id/profile_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo User"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:textColor="@color/previewColor"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hi_text"
+        android:layout_marginStart="10dp"
+        />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_user_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="@id/profile_logout"
+        app:layout_constraintTop_toBottomOf="@id/profile_logout"
+        android:src="@drawable/demo_user"
+        android:layout_marginTop="10dp"
+        />
+    
+    <RelativeLayout
+        android:id="@+id/profile_subscription"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_user_image"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/subscription_background"
+        >
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go Pro - Trial Subscription"
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="16sp"
+                android:textColor="@color/previewColor"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unlock many additional programs \nand features "
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="14sp"
+                android:textColor="@color/previewColor"
+                android:textStyle="normal"
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/subscribe_lock_unlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lock_open_asset"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/profile_equipment_selling"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_subscription"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/subscription_background"
+        >
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fitness Equipment"
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="16sp"
+                android:textColor="@color/previewColor"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Equipments in your fitness goal"
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="14sp"
+                android:textColor="@color/previewColor"
+                android:textStyle="normal"
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dumbell_asset"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/stats_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_equipment_selling"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="Stats"
+        android:textColor="@color/previewColor"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:textStyle="normal"
+        android:textSize="20sp"
+        />
+
+    <LinearLayout
+        android:id="@+id/profile_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stats_text"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/stats_background"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Training Completed:"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[ In Number ]"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    android:layout_gravity="start"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_training_completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/previewColorLight"
+                android:textStyle="bold"
+                android:textSize="21sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Time Completed:"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[ In Minutes ]"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    android:layout_gravity="start"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_total_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/previewColorLight"
+                android:textStyle="bold"
+                android:textSize="21sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Asana Performed:"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[ In Number ]"
+                    android:fontFamily="@font/segoe_ui"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/previewColorLight"
+                    android:layout_gravity="start"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_total_asanas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/previewColorLight"
+                android:textStyle="bold"
+                android:textSize="21sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/weight_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Start Weight"
+                android:textColor="@color/previewColorLight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/profile_start_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:text="00.00 Kg"
+                android:textColor="@color/previewColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Current Weight"
+                android:textColor="@color/previewColorLight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/profile_current_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00.00 Kg"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/previewColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Goal Weight"
+                android:textColor="@color/previewColorLight"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/profile_goal_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:text="00.00 Kg"
+                android:textColor="@color/themeDarkBlue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/profile_add_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Add Details"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/profile_stats"
+        android:background="@drawable/add_round_background"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

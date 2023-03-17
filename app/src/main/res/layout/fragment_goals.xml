@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.GoalsFragment"
+    android:background="@drawable/theme_background"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/goals_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/achievement_asset"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/light_blue_golas_text_background"
+            android:text="@string/goals_text"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:textSize="13dp"
+            android:textColor="@color/previewColor"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/goals_success_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goals_top_layout"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rectangle_background"
+        >
+
+        <TextView
+            android:id="@+id/text_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOUR SUCCESS"
+            android:textColor="@color/green"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/goals_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/clock_asset"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="start"
+                >
+
+                <TextView
+                    android:id="@+id/goal_total_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PRACTICE TIME"
+                    android:textColor="@color/previewColorLight"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/goal_completed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/text_success"
+            app:layout_constraintTop_toBottomOf="@id/text_success"
+            app:layout_constraintBottom_toTopOf="@id/goals_progress_bar"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            />
+
+        <ProgressBar
+            android:id="@+id/goals_progress_bar"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:max="100"
+            android:theme="@style/ProgressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/goals_timer"
+            android:scaleY="3"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/goals_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/goals_progress_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="3dp"
+            tools:listitem="@layout/goals_asanas_item_view"
+            tools:itemCount="3"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginBottom="40dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goals_share_success"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/goal_share_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goals_success_layout"
+        app:layout_constraintBottom_toBottomOf="@id/goals_success_layout"
+        android:text="Share Success"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        />
+
+    <RelativeLayout
+        android:id="@+id/set_custom_goal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goals_share_success"
+        android:layout_margin="15dp"
+        android:background="@drawable/custom_goal_background"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:id="@+id/edit_custom"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/custom_edit_asset"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/edit_custom"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Custom Goal"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Practice"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/previewColorLight"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/custom_goal_next"
+            android:layout_marginEnd="10dp"
+            />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

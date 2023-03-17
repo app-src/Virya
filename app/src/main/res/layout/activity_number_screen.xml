@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/previewColorLight"
+    tools:context=".Screens.NumberScreen">
+
+    <View
+        android:id="@+id/numberView"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/number_asset"
+        app:layout_constraintBottom_toBottomOf="@id/numberView"
+        app:layout_constraintEnd_toEndOf="@id/numberView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/numberView"
+        app:layout_constraintTop_toTopOf="@id/numberView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/numberView"
+        android:layout_marginTop="30dp"
+        android:text="VERIFY YOUR MOBILE NUMBER"
+        android:textColor="@color/white"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:textSize="19sp"
+        android:id="@+id/verifyText"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verifyText"
+        android:layout_marginTop="3dp"
+        android:text="WE WILL SEND OTP ON YOUR NUMBER TO VERIFY"
+        android:textColor="@color/themeLightGreen"
+        android:fontFamily="@font/helvetica_regular"
+        android:textStyle="bold"
+        android:textSize="10sp"
+        android:id="@+id/otpText"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otpText"
+        android:layout_marginTop="26dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/numberTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:counterMaxLength="10"
+                app:counterEnabled="true"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/numberPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type Your Mobile Number"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:fontFamily="@font/airbnb_cereal_medium"
+                    android:singleLine="true"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/numberContinueButton"
+                android:textColor="@color/black"
+                android:text="CONTINUE"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

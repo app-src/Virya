@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/previewColorLight"
+    tools:context=".Screens.OTPScreen">
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/otpProgressBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:indeterminateDrawable="@drawable/progress_icon"-->
+<!--        android:visibility="invisible"-->
+<!--        />-->
+
+    <View
+        android:id="@+id/otpView"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="@id/otpView"
+        app:layout_constraintEnd_toEndOf="@id/otpView"
+        app:layout_constraintTop_toTopOf="@id/otpView"
+        app:layout_constraintBottom_toBottomOf="@id/otpView"
+        android:src="@drawable/otp_asset"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpView"
+        android:id="@+id/otpPhoneShowText"
+        android:text="+91 **********"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otpPhoneShowText"
+        android:layout_marginTop="12dp"
+        android:text="VERIFICATION"
+        android:textColor="@color/themeLightGreen"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:textSize="19sp"
+        android:id="@+id/otpVerifyText"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpVerifyText"
+        android:layout_marginTop="3dp"
+        android:text="ENTER THE OTP CODE TO VERIFY THE MOBILE NUMBER"
+        android:textColor="@color/themeLightGreen"
+        android:fontFamily="@font/helvetica_regular"
+        android:textStyle="bold"
+        android:textSize="10sp"
+        android:id="@+id/otpVerificationText"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/otpCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otpVerificationText"
+        android:layout_marginTop="26dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/otpTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:hintTextColor="@color/black"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otpOTPCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter OTP"
+                    android:inputType="number"
+                    android:fontFamily="monospace"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    android:password="true"
+                    android:textAlignment="center"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/otpVerifyButton"
+                android:textColor="@color/black"
+                android:text="VERIFY"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

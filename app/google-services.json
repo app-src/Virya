@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "808848300430",
+    "project_id": "virya-50134",
+    "storage_bucket": "virya-50134.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808848300430:android:25a0e132f8f4c6a0f62cdf",
+        "android_client_info": {
+          "package_name": "com.scammer101.Virya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808848300430-o53cbkn87v2a5aqbag7ro68cd4ul4mau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaCuQtQb1AjP2kyG0EMsMETcbM5acyqX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808848300430-o53cbkn87v2a5aqbag7ro68cd4ul4mau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

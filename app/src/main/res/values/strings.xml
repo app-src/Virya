@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Virya</string>
+    <string name="goals_text">Well Done!\nYou\'re doing great!\nLet\'s share a few moments of your practice?</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

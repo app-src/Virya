@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/fake_body_asset"
+                android:layout_marginTop="3dp"
+                />
+            <TextView
+                android:id="@+id/pose_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:textColor="@color/green"
+                android:fontFamily="@font/sitka_small"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/pose_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asanas"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoe_ui"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/pose_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="40dp"
+        android:text="340"
+        android:fontFamily="@font/sitka_small"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

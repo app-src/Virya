@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Screens.AddDetailsScreen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Profile"
+        android:fontFamily="@font/airbnb_cereal_medium"
+        android:textColor="@color/previewColor"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:id="@+id/details_profile_text"
+        />
+
+    <ImageView
+        android:id="@+id/profile_details_back_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/left_asset"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/back_button_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/details_profile_text"
+        />
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/detail_profile_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/demo_user"
+        app:layout_constraintStart_toStartOf="@id/details_profile_text"
+        app:layout_constraintEnd_toEndOf="@id/details_profile_text"
+        app:layout_constraintTop_toBottomOf="@id/details_profile_text"
+        android:layout_marginTop="5dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/camera_asset"
+        app:layout_constraintStart_toStartOf="@id/detail_profile_image"
+        app:layout_constraintEnd_toEndOf="@id/detail_profile_image"
+        app:layout_constraintTop_toTopOf="@id/detail_profile_image"
+        app:layout_constraintBottom_toBottomOf="@id/detail_profile_image"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_profile_image"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="16"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Of Birth"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:maxLength="10"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight (in Kgs)"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_start_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:hint="00.00"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height (in cms)"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:hint="00.00"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="12"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goal Weight (in Kgs)"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_goal_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:inputType="numberDecimal"
+                android:hint="00.00"
+                android:textColorHint="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Weight (in Kgs)"
+                android:textColor="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                />
+            <EditText
+                android:id="@+id/details_current_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="6"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:backgroundTint="@color/black"
+                android:inputType="numberDecimal"
+                android:hint="00.00"
+                android:textColorHint="@color/previewColorLight"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/details_save_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/save_details_profile_button_background"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/airbnb_cereal_medium"
+            />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
